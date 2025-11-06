@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";// Importerar BrowserRouter för att hantera routing
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* Använd BrowserRouter för att möjliggöra routing i appen */}
+    <BrowserRouter>
     <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

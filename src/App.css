@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
-}
+/* Grundlayout */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.site-header { padding: 12px 20px; border-bottom: 1px solid #eee; }
+.tagline { margin: 0 0 8px; font-weight: 600; }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+.main-nav ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 16px; }
+.main-nav a { text-decoration: none; padding: 6px 10px; border-radius: 8px; }
+.main-nav a:hover { background: #f4f4f4; }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.site-content { padding: 24px 20px; min-height: 60vh; }
+/* .site-footer stylar <footer>-elementet som helhet */
+/* ===== Footer (säker-styles så ikonen alltid syns) ===== */
+
+/* ===== Footer: säkra regler ===== */
+
+.site-footer {
+  background: #ffffff;
+  color: #222222;              /* färg som SVG ärver */
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;              /* låt länken ärva .site-footer-färgen */
+  opacity: 1;
 }
+
+/* Hover-feedback */
+.social-link:hover { opacity: 0.8; }
+
+/* Tvinga fram synlighet och storlek på ikonen */
+.social-link svg {
+  width: 24px !important;
+  height: 24px !important;
+  display: block !important;
+}
+
+/* Om någon global CSS sätter "fill: none", så tvingar vi tillbaka färgen */
+.social-link svg path {
+  fill: currentColor !important;
+}
+
+/* Skärmläsar-text (visuellt dold) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+/* En enhetlig bildruta som inte beskär bilden */
+.thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;    /* prova 4/3, 1/1 eller 16/9 */
+  object-fit: contain;     /* visa hela bilden, ingen crop */
+  background: #f8f9fa;     /* neutral bakgrund bakom olika format */
+  display: block;
+  border-top-left-radius: .375rem;  /* matcha .card */
+  border-top-right-radius: .375rem;
+  padding: 6px;            /* liten luft runt bilden (valfritt) */
+}
+
+
+/* (Valfritt) Enhetlig textyta i korten så raderna blir jämna */
+.product-card-body { min-height: 72px; } /* justera vid behov */
